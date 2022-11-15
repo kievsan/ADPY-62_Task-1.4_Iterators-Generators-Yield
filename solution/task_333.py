@@ -45,22 +45,17 @@ class FlatIterator:
         return iterable
 
     def __next__(self):
-        try:
-            if self.stop_iterations:
-                print('Список стал плоским!')
-                raise StopIteration
-            else:
-                print('def __next__(self):')  #
-                assert self.iterations < 100, 'СЛИШКОМ МНОГО ИТЕРАЦИЙ!'
-                next_try = self.get_next_element()
-                print(f'\tnext_try = {next_try}')  #
-                self.simpler_list.append(next_try)
-                print(f'\tsimpler_list-{self.iterations}: {self.simpler_list}')  #
-
-        except StopIteration:
-            print('Список стал плоским!!!')
-            next_try = next(self.iter_chunk)
-        return next_try
+        assert self.iterations < 100, 'СЛИШКОМ МНОГО ИТЕРАЦИЙ!'
+        if self.stop_iterations:
+            print('Список стал плоским!')
+            raise StopIteration
+        else:
+            print('def __next__(self):')  #
+            next_try = self.get_next_element()
+            self.simpler_list.append(next_try)
+            print(f'\tnext_try = {next_try}')  #
+            print(f'\tsimpler_list-{self.iterations}: {self.simpler_list}')  #
+            return next_try
 
     def get_next_element(self):
         try:
