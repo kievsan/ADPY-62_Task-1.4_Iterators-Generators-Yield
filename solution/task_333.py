@@ -56,7 +56,7 @@ class FlatIterator:
                 print(f'\tnext_try = {next_try}')  #
                 self.simpler_list.append(next_try)
                 print(f'\tsimpler_list-{self.iterations}: {self.simpler_list}')  #
-                next_try = next(self.iter_chunk)
+
         except StopIteration:
             print('Список стал плоским!!!')
             next_try = next(self.iter_chunk)
